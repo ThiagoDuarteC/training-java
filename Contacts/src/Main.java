@@ -8,12 +8,14 @@ public class Main {
         Scanner read = new Scanner(System.in);
         List<Contact> contatos = new ArrayList<>();
         while (true){
-            System.out.println("Escolha a opção que deseja" +
-                    "1- Listar contatos" +
-                    "2- Adicionar contato" +
-                    "3- Editar contato" +
-                    "4- Excluir contato" +
-                    "0- Sair");
+            System.out.println("""
+                    Escolha a opção que deseja:
+                    1- Listar contatos
+                    2- Adicionar contato
+                    3- Editar contato
+                    4- Excluir contato
+                    0- Sair
+                    """);
             int opcao = Integer.parseInt(read.nextLine());
 
             switch (opcao){
@@ -23,7 +25,10 @@ public class Main {
                         continue;
                     }
                     System.out.println("Seus contatos:");
-                    // Listar os contatos
+                    for(int i = 0; i < contatos.size(); i++){
+                        System.out.println( i+1 + " - " + contatos.get(i).getFullName());
+                    }
+                    break;
                 case 2:
                     Contact contato = new Contact();
                     System.out.println("Informe o nome do seu contato");
@@ -32,13 +37,17 @@ public class Main {
                     System.out.println("Informe o número do seu contato");
                     String numero = read.nextLine();
                     contato.setPhone(numero);
+                    contatos.add(contato);
+                    break;
                 case 3:
                     //Editar contato
+                    break;
                 case 4:
                     //Excluir contato
+                    break;
                 case 0:
                     System.out.println("Adeus!");
-                    break;
+                    return;
                 default:
                     System.out.println("Escolha uma opção válida!");
             }
